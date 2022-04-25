@@ -23,4 +23,21 @@ func main() {
 	s := "hello \u00bc"
 
 	fmt.Println("Before marshalling : ",s)
+
+	mdata2, err := asn1.Marshal(s)
+	checkError(err)
+
+	fmt.Println("Marshalled ok")
+	var newstr string
+	_, err2 := asn1.Unmarshal(mdata2, &newstr)
+	checkError(err2)
+
+	fmt.Println("After marshal/unmarshal :",newstr)
+}
+
+func checkError(err error) {
+        if err != nil {
+                fmt.Println("Fatal error ", err.Error())
+                os.Exit(1)
+        }
 }
