@@ -22,7 +22,12 @@ type Email struct {
 }
 
 func main(){
+	person := Person{
+		Name: Name {Family: "Newmarch", Personal: "Jan"},
+		Email: []Email{Email{Kind: "home", Address: "jan@newmarch.namea"}, Email{Kind: "work", Address: "j.newmarch@boxhill.edu.au"}}
+	}
 
+	saveJSON("person.json", person)
 }
 
 func saveJSON(){
